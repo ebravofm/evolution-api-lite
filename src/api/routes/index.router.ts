@@ -7,6 +7,7 @@ import { StorageRouter } from '@api/integrations/storage/storage.router';
 import { configService } from '@config/env.config';
 import { Router } from 'express';
 import fs from 'fs';
+import { join } from 'path';
 
 import { CallRouter } from './call.router';
 import { ChatRouter } from './chat.router';
@@ -34,7 +35,7 @@ const guards = [instanceExistsGuard, instanceLoggedGuard, authGuard['apikey']];
 
 const telemetry = new Telemetry();
 
-const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+const packageJson = JSON.parse(fs.readFileSync(join(process.cwd(), 'package.json'), 'utf8'));
 
 router
   .use((req, res, next) => telemetry.collectTelemetry(req, res, next))
