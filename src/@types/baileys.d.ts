@@ -1,11 +1,2 @@
-import { WASocket } from 'baileys';
-
-declare module 'baileys' {
-  interface WASocket {
-    offerCall(jid: string, isVideo: boolean): Promise<{
-      id: string;
-      to: string;
-    }>;
-    terminateCall(callId: string, to: string): Promise<void>;
-  }
-}
+// Este archivo ya no es necesario ya que implementamos los métodos directamente en el servicio
+// Se mantiene para compatibilidad pero no se usa
